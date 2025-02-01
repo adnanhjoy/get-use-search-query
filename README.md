@@ -5,11 +5,23 @@ A React hook for filtering table data based on a search query.
 ## Installation
 ```bash
 npm install get-use-search-query
+```
 
+## Import Package
+```js
+import { useState } from 'react'
+import './App.css'
+import getUseSearchQuery from 'get-use-search-query';
+```
 
 ## Usage
-```bash
+```js
 function App() {
+    const data = [
+        { id: 1, name: 'Adnan Hossain' },
+        { id: 2, name: 'Joy Sikder' },
+        { id: 3, name: 'Sara Rahman' },
+    ];
   const [query, setQuery] = useState();
 
   const result = getUseSearchQuery(data, `?search=${query}`);
@@ -40,3 +52,5 @@ function App() {
 }
 
 export default App
+
+```
