@@ -1,13 +1,10 @@
 {
   "name": "get-use-search-query",
   "version": "1.0.0",
-  "main": "index.js",
-  "module": "index.js",
-  "types": "index.d.ts",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/adnanhjoy/get-use-search-query"
-  },
+  "type": "module",
+  "main": "src/index.js",
+  "module": "src/index.js",
+  "types": "src/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -19,9 +16,8 @@
     "hook"
   ],
   "author": "Adnan Hossain",
-  "license": "ISC",
-  "description": "",
+  "license": "MIT",
   "peerDependencies": {
-    "react": ">=18.8.0"
+    "react": ">=18.0.0"
   }
 }

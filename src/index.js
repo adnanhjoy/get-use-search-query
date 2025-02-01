@@ -1,30 +1,35 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from "react";
 
 const getUseSearchQuery = (data, searchQuery) => {
     const [filteredData, setFilteredData] = useState([]);
-    const searchParams = new URLSearchParams(searchQuery);
-    const params = searchParams.get('search');
+
+    const params = useMemo(() => {
+        const searchParams = new URLSearchParams(searchQuery);
+        return searchParams.get("search");
+    }, [searchQuery]);
+
+    const stableData = useMemo(() => data, [data]);
 
     useEffect(() => {
         if (!params) {
-            setFilteredData(data);
+            setFilteredData(stableData);
             return;
         }
 
-        const matchedData = data?.filter((item) =>
-            Object.values(item).some(
-                (value) =>
-                    (typeof value === 'string' && value.toLowerCase().includes(params.toLowerCase()))
-            )
-        );
+        const timeout = setTimeout(() => {
+            const matchedData = stableData.filter((item) =>
+                Object.values(item).some(
+                    (value) =>
+                        typeof value === "string" &&
+                        value.toLowerCase().includes(params.toLowerCase())
+                )
+            );
 
+            setFilteredData(matchedData?.length > 0 ? matchedData : []);
+        }, 300);
 
-        if (matchedData?.length > 0) {
-            setFilteredData(matchedData);
-        } else {
-            setFilteredData([]);
-        }
-    }, [data, params]);
+        return () => clearTimeout(timeout);
+    }, [stableData, params]);
 
     return filteredData;
 };
