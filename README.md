@@ -1,4 +1,4 @@
-# get-use-search-query
+# Get Use Search Query
 
 A React hook for filtering table data based on a search query.
 
@@ -9,8 +9,6 @@ npm install get-use-search-query
 
 ## Import Package
 ```js
-import { useState } from 'react'
-import './App.css'
 import getUseSearchQuery from 'get-use-search-query';
 ```
 
