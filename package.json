@@ -5,6 +5,10 @@
   "main": "src/index.js",
   "module": "src/index.js",
   "types": "src/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adnanhjoy/get-use-search-query.git"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
