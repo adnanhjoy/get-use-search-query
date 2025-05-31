@@ -16,13 +16,17 @@ import getUseSearchQuery from 'get-use-search-query';
 ```js
 function App() {
     const data = [
-        { id: 1, name: 'Adnan Hossain' },
-        { id: 2, name: 'Joy Sikder' },
-        { id: 3, name: 'Sara Rahman' },
+        { id: 1, name: 'Adnan Hossain', email: 'adnan@example.com' },
+        { id: 2, name: 'Joy Sikder', email: 'joy@gmail.com' },
+        { id: 3, name: 'Sara Rahman', email: 'sara@gmail.com' },
     ];
   const [query, setQuery] = useState();
 
-  const result = getUseSearchQuery(data, `?search=${query}`);
+  const result = getUseSearchQuery(data, `?search=${query}`, {
+    keys: ["name", "email"],   // specify searchable fields
+    threshold: 0.3,            // how fuzzy the search is
+    limit: 10,                 // limit results (optional)
+});
 
   return (
     <div className='container mx-auto my-10'>
